@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CurrentWeather" representedClassName="CurrentWeather" syncable="YES" codeGenerationType="class">
+        <attribute name="humidity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="current" inverseEntity="Weather" syncable="YES"/>
+    </entity>
+    <entity name="DailyWeather" representedClassName="DailyWeather" syncable="YES" codeGenerationType="class">
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="temperatureHight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="temperatureLow" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="daily" inverseEntity="Weather" syncable="YES"/>
+    </entity>
+    <entity name="HourlyWeather" representedClassName="HourlyWeather" syncable="YES" codeGenerationType="class">
+        <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="temperature" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="hourly" inverseEntity="Weather" syncable="YES"/>
+    </entity>
+    <entity name="Weather" representedClassName="Weather" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="current" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CurrentWeather" inverseName="weather" inverseEntity="CurrentWeather" syncable="YES"/>
+        <relationship name="daily" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DailyWeather" inverseName="weather" inverseEntity="DailyWeather" syncable="YES"/>
+        <relationship name="hourly" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="HourlyWeather" inverseName="weather" inverseEntity="HourlyWeather" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CurrentWeather" positionX="18" positionY="63" width="128" height="165"/>
+        <element name="DailyWeather" positionX="9" positionY="54" width="128" height="120"/>
+        <element name="HourlyWeather" positionX="-18" positionY="27" width="128" height="105"/>
+        <element name="Weather" positionX="36" positionY="81" width="128" height="135"/>
+    </elements>
+</model>
